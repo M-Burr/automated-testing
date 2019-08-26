@@ -13,8 +13,6 @@ describe Card do
     end
 
     it "Raises an ArgumentError for invalid parameters" do
-      # To raise an ArgumentError in card.rb
-      # raise ArgumentError.new
       expect {Card.new(0, :diamonds)}.must_raise ArgumentError
       expect {Card.new(14, :diamonds)}.must_raise ArgumentError
       expect {Card.new(14, :clovers)}.must_raise ArgumentError
@@ -24,28 +22,32 @@ describe Card do
   describe "Testing to_s" do
 
     it "to_s returns a readable String value logically for values 2-10" do
-      # Test to ensure that to_s works for cards values 2-10
-      # for example:  "2 of diamonds"
+      testing_nums = Card.new(2, :diamonds)
+      expect(testing_nums.to_s).must_equal "2 of diamonds"
     end
 
     it "to_s returns a readable String value for Ace, Jack, Queen, King" do
-      # Test to ensure that to_s works for cards values 1, and 11-13
-      # For example: "Queen of hearts"
-      # The current implementation of to_s does not address this feature
-      # Write the test, see it fail, then modify to_s to make it pass!
-      # (Consider writing a helper method!)
+      testing_suit = Card.new(11, :hearts)
+      expect(testing_suit.to_s).must_equal "Jack of hearts"
     end
   end
 
   describe "Reader methods" do
 
     it "Can retrieve the value of the card using a `.value`." do
-      # ensure that `.value works as expected`
+      value_test = Card.new(4, :spades)
+      expect(value_test.value).must_equal 4
+
+      value_test2 = Card.new(10, :hearts)
+      expect(value_test2.value).must_equal 10
     end
 
     it "Can retrieve the value of the card using a `.suit`." do
-      # ensure that `.suit works as expected returning the symbol of the suit`
+      suit_test = Card.new(4, :diamonds)
+      expect(suit_test.suit).must_equal :diamonds
 
+      suit_test2 = Card.new(12, :hearts)
+      expect(suit_test2.suit).must_equal :hearts
     end
   end
 
